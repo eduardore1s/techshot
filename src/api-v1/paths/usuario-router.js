@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import jsonSchema from 'jsonschema';
+import usuarioModel from '../models/usuario-model';
 
 const usuarioRouter = express();
 
@@ -18,11 +19,25 @@ usuarioRouter.put('/:id', alterarUsuario);
 usuarioRouter.delete('/:id', excluirUsuario); 
 
 function buscarUsuarios (req, res, next) {
-    res.send('buscarUsuarios');
+    usuarioModel.buscarUsuarios(res, (err, lista) => {
+       if (!err){
+           res.json (lista);
+       }
+       else {
+           res.status(400).send(err.message);
+       }
+   })
 }
 
 function incluirUsuario (req, res, next) {
-    res.send('incluirUsuario');
+    usuarioModel.incluirUsuario(req, res, (err, lista) => {
+        if (!err){
+            res.json (lista);
+        }
+        else {
+            res.status(400).send(err.message);
+        }
+    })
 }
 
 function buscarUsuario (req, res, next) {

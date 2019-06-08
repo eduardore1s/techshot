@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import jsonSchema from 'jsonschema';
+import techshotModel from '../models/techshot-model';
 
 const techshotRouter = express();
 
@@ -18,11 +19,25 @@ techshotRouter.put('/:id', alterarTechshot);
 techshotRouter.delete('/:id', excluirTechshot); 
 
 function buscarTechshots (req, res, next) {
-    res.send('buscarTechshots');
+    techshotModel.buscarTechshots(res, (err, lista) => {
+        if (!err){
+            res.json (lista);
+        }
+        else {
+            res.status(400).send(err.message);
+        }
+    })
 }
 
 function incluirTechshot (req, res, next) {
-    res.send('incluirTechshot');
+    techshotModel.incluirTechshot(req, res, (err, lista) => {
+        if (!err){
+            res.json (lista);
+        }
+        else {
+            res.status(400).send(err.message);
+        }
+    })
 }
 
 function buscarTechshot (req, res, next) {

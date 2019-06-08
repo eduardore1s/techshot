@@ -1,8 +1,10 @@
 import http from 'http';
 import express from 'express';
 import apiRouter from './api-v1/api-router';
+import db from './db';
 
 const app = express ();
+//const connection = db.criarConexao();
 
 app.use('/api/v1', apiRouter);
 app.use('/', (req, res, next) => res.send('-- API Techshot --'));
@@ -12,7 +14,10 @@ const porta = 8080;
 http.createServer (app).listen (porta, () => 
         console.log (`Servidor Techshot pronto na porta ${porta}`)); 
 
-
+//connection.connect(function(err){
+//    if(err) return console.log(err);
+//    console.log('Conexão com banco de dados OK!');
+//})
 
 
 
