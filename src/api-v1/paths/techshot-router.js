@@ -1,7 +1,7 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import jsonSchema from 'jsonschema';
-import techshotModel from '../models/techshot-model';
+const express = require('express');
+const bodyParser = require('body-parser');
+const jsonSchema = require('jsonschema');
+const techshotModel = require('../models/techshot-model');
 
 const techshotRouter = express();
 
@@ -51,4 +51,5 @@ function alterarTechshot (req, res, next) {
 function excluirTechshot (req, res, next) {
     res.send('excluirTechshot');
 }
-export default techshotRouter; 
+
+module.exports = techshotRouter; 

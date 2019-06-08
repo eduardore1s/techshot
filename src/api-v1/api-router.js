@@ -1,7 +1,7 @@
-import express from 'express';
-import usuariosRouter from './paths/usuario-router';
-import techshotsRouter from './paths/techshot-router';
-import loginRouter from './paths/login-router';
+const express = require('express');
+const usuariosRouter = require('./paths/usuario-router');
+const techshotsRouter = require('./paths/techshot-router');
+const loginRouter = require('./paths/login-router');
 
 const apiRouter = express.Router();
 
@@ -10,4 +10,4 @@ apiRouter.use('/usuarios', usuariosRouter);
 apiRouter.use('/techshots', techshotsRouter);
 apiRouter.use('/', (req, res, next) => res.send('-- API V1 - Techshot Dti --'));
 
-export default apiRouter;
+module.exports = apiRouter;

@@ -1,7 +1,7 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import jsonSchema from 'jsonschema';
-import loginModel from '../models/login-model';
+const express = require('express');
+const bodyParser = require('body-parser');
+const jsonSchema = require('jsonschema');
+const loginModel = require('../models/login-model');
 
 const loginRouter = express();
 
@@ -25,4 +25,4 @@ function buscarLogin (req, res, next) {
    })
 }
 
-export default loginRouter; 
+module.exports = loginRouter; 

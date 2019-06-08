@@ -23,6 +23,6 @@ function execSQLQuery(sqlQry, res){
   });
 }
 
-export default {
+module.exports = {
   execSQLQuery
 }

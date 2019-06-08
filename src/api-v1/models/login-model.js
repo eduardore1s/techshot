@@ -1,4 +1,4 @@
-import db from '../../db';
+const db = require('../../db');
 
 function loginUsuario (login, senha, res){
     db.execSQLQuery(`SELECT Type_User FROM techshot.User 
@@ -6,6 +6,6 @@ function loginUsuario (login, senha, res){
     and Password_User = '${senha}'`, res);
 }
 
-export default {
+module.exports = {
     loginUsuario
 }

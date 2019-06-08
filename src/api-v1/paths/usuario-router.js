@@ -1,7 +1,7 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import jsonSchema from 'jsonschema';
-import usuarioModel from '../models/usuario-model';
+const express = require('express');
+const bodyParser = require('body-parser');
+const jsonSchema = require('jsonschema');
+const usuarioModel = require('../models/usuario-model');
 
 const usuarioRouter = express();
 
@@ -52,4 +52,4 @@ function excluirUsuario (req, res, next) {
     res.send('excluirUsuario');
 }
 
-export default usuarioRouter;
+module.exports = usuarioRouter;

@@ -1,4 +1,4 @@
-import db from '../../db';
+const db = require('../../db');
 
 function buscarTechshots (res){
     db.execSQLQuery('SELECT * FROM techshot.Techshot;', res);
@@ -35,7 +35,7 @@ function incluirTechshotVoto (){
     
 }
 
-export default {
+module.exports = {
     buscarTechshots,
     incluirTechshot,
     buscarTechshot,

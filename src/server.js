@@ -1,7 +1,7 @@
-import http from 'http';
-import express from 'express';
-import apiRouter from './api-v1/api-router';
-import db from './db';
+const http = require('http');
+const express = require('express');
+const apiRouter = require('./api-v1/api-router');
+const db = require('./db');
 
 const app = express ();
 //const connection = db.criarConexao();

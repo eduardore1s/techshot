@@ -1,4 +1,4 @@
-import db from '../../db';
+const db = require('../../db');
 
 function buscarUsuarios (res){
      db.execSQLQuery('SELECT * FROM techshot.User;', res);
@@ -25,7 +25,7 @@ function excluirUsuario (){
     //db.execSQLQuery("INSERT INTO techshot.`User`
 }
 
-export default {
+module.exports = {
     buscarUsuarios,
     incluirUsuario,
     buscarUsuario,
