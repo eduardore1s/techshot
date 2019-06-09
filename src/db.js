@@ -7,7 +7,7 @@ function execSQLQuery(sqlQry, res){
     password : 'root',
     database : 'techshot'*/
     host     : '127.0.0.1',
-    port     : 55415,
+    port     : 54522,
     user     : 'azure',
     password : '6#vWHD_$',
     database : 'localdb'
