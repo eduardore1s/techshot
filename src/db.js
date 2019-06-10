@@ -1,16 +1,16 @@
 function execSQLQuery(sqlQry, res){
   const mysql = require('mysql');
   const connection = mysql.createConnection({
-    host     : 'localhost',
+    /*host     : 'localhost',
     port     : 3306,
     user     : 'root',
     password : 'root',
-    database : 'techshot'
-   /*host     : '127.0.0.1',
-    port     : 54522,
+    database : 'techshot'*/
+    host     : '127.0.0.1',
+    port     : 55415,
     user     : 'azure',
     password : '6#vWHD_$',
-    database : 'localdb'*/
+    database : 'localdb'
   });
 
   connection.query(sqlQry, function(error, results, fields){
