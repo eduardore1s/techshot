@@ -15,14 +15,24 @@ function incluirUsuario (req, res){
         '${usuario['senha']}',
         '${usuario['tipo']}')`, res);
 }
-function buscarUsuario (){
-    //db.execSQLQuery("INSERT INTO techshot.`User`
+function buscarUsuario (idUsuario, res){
+    console.log(idUsuario);
+    db.execSQLQuery(`SELECT * FROM techshot.User 
+    WHERE Id_User =  '${idUsuario}';`, res);
 }
-function alterarUsuario (){
-    //db.execSQLQuery("INSERT INTO techshot.`User`
+function alterarUsuario (req, idUsuario, res){
+    var usuario = req.body;
+    db.execSQLQuery(`UPDATE techshot.User
+    SET Name_User='${usuario['nome']}',
+    Email_User='${usuario['email']}',
+    Password_User='${usuario['senha']}',
+    Type_User='${usuario['tipo']}'
+    WHERE Id_User='${idUsuario}';`, res);
 }
-function excluirUsuario (){
-    //db.execSQLQuery("INSERT INTO techshot.`User`
+
+function excluirUsuario (idUsuario, res){
+    db.execSQLQuery(`DELETE FROM techshot.User 
+    WHERE Id_User =  '${idUsuario}';`, res);
 }
 
 module.exports = {

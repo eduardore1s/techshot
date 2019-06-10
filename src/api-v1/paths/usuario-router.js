@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const jsonSchema = require('jsonschema');
 const usuarioModel = require('../models/usuario-model');
 
 const usuarioRouter = express();
@@ -41,15 +40,37 @@ function incluirUsuario (req, res, next) {
 }
 
 function buscarUsuario (req, res, next) {
-    res.send('buscarUsuario');
+    console.log(req.params);
+    usuarioModel.buscarUsuario(req.params.id, res, (err, lista) => {
+        if (!err){
+            res.json (lista);
+        }
+        else {
+            res.status(400).send(err.message);
+        }
+    })
 }
 
 function alterarUsuario (req, res, next) {
-    res.send('alterarUsuario');
+    usuarioModel.alterarUsuario(req, req.params.id, res, (err, lista) => {
+        if (!err){
+            res.json (lista);
+        }
+        else {
+            res.status(400).send(err.message);
+        }
+    })
 }
 
 function excluirUsuario (req, res, next) {
-    res.send('excluirUsuario');
+    usuarioModel.excluirUsuario(req.params.id, res, (err, lista) => {
+        if (!err){
+            res.json (lista);
+        }
+        else {
+            res.status(400).send(err.message);
+        }
+    })
 }
 
 module.exports = usuarioRouter;

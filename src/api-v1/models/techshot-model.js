@@ -19,20 +19,37 @@ function incluirTechshot (req, res){
         '${techshot['idCategoria']}')`, res);
     
 }
-function buscarTechshot (){
+function buscarTechshot (idTechshot, res){
+    db.execSQLQuery(`SELECT * FROM techshot.Techshot 
+    WHERE Id_Tec =  '${idTechshot}';`, res);
+}
+function alterarTechshot (req, idTechshot, res){
+    var techshot = req.body;
+    db.execSQLQuery(`UPDATE techshot.Techshot
+    SET Titulo_Tec='${techshot['titulo']}',
+    Descricao_Tec='${techshot['descricao']}',
+    Palestrante_Tec='${techshot['palestrante']}',
+    IdCat_Tec='${techshot['idCategoria']}'
+    WHERE Id_Tec='${idTechshot}'`, res);
     
 }
-function alterarTechshot (){
+function excluirTechshot (idTechshot, res){
+    db.execSQLQuery(`DELETE FROM techshot.Techshot 
+    WHERE Id_User =  '${idTechshot}';`, res);
     
 }
-function excluirTechshot (){
+function buscarTechshotVotos (idTechshot, res){
+    db.execSQLQuery(`SELECT count(*) FROM techshot.Votacao
+    WHERE IdTec_Vot ='${idTechshot}';`, res);
     
 }
-function buscarTechshotVotos (){
-    
-}
-function incluirTechshotVoto (){
-    
+function incluirTechshotVoto (req, idTechshot, res){
+    const uuidv1 = require('uuid/v1');
+    var voto = req.body;
+    db.execSQLQuery(`INSERT INTO techshot.Votacao
+    (Id_Vot, IdTec_Vot, IdUser_Vot, CreatedDate)
+    VALUES('${uuidv1()}', '${idTechshot}', 
+    '${voto['idUsuario']}', NOW())`, res);
 }
 
 module.exports = {

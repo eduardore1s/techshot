@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const jsonSchema = require('jsonschema');
 const techshotModel = require('../models/techshot-model');
 
 const techshotRouter = express();
@@ -17,6 +16,8 @@ techshotRouter.post('/', incluirTechshot);
 techshotRouter.get('/:id', buscarTechshot);
 techshotRouter.put('/:id', alterarTechshot);
 techshotRouter.delete('/:id', excluirTechshot); 
+techshotRouter.get('/:id/votos', buscarTechshotVotos); 
+techshotRouter.post('/:id/votos', incluirTechshotVoto);
 
 function buscarTechshots (req, res, next) {
     techshotModel.buscarTechshots(res, (err, lista) => {
@@ -41,15 +42,58 @@ function incluirTechshot (req, res, next) {
 }
 
 function buscarTechshot (req, res, next) {
-    res.send('buscarTechshot');
+    techshotModel.buscarTechshot(req.params.id, res, (err, lista) => {
+        if (!err){
+            res.json (lista);
+        }
+        else {
+            res.status(400).send(err.message);
+        }
+    })
 }
 
 function alterarTechshot (req, res, next) {
-    res.send('alterarTechshot');
+    techshotModel.alterarTechshot(req, req.params.id, res, (err, lista) => {
+        if (!err){
+            res.json (lista);
+        }
+        else {
+            res.status(400).send(err.message);
+        }
+    })
 }
 
 function excluirTechshot (req, res, next) {
-    res.send('excluirTechshot');
+    techshotModel.excluirTechshot(req.params.id, res, (err, lista) => {
+        if (!err){
+            res.json (lista);
+        }
+        else {
+            res.status(400).send(err.message);
+        }
+    })
+}
+
+function buscarTechshotVotos (req, res, next) {
+    techshotModel.buscarTechshotVotos(req.params.id, res, (err, lista) => {
+        if (!err){
+            res.json (lista);
+        }
+        else {
+            res.status(400).send(err.message);
+        }
+    })
+}
+
+function incluirTechshotVoto (req, res, next) {
+    techshotModel.incluirTechshotVoto(req, req.params.id, res, (err, lista) => {
+        if (!err){
+            res.json (lista);
+        }
+        else {
+            res.status(400).send(err.message);
+        }
+    })
 }
 
 module.exports = techshotRouter; 

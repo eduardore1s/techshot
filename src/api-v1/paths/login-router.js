@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const jsonSchema = require('jsonschema');
 const loginModel = require('../models/login-model');
 
 const loginRouter = express();
