@@ -9,6 +9,6 @@ app.use('/api/v1', apiRouter);
 app.use('/', (req, res, next) => res.send('-- API Techshot --'));
 
 // Iniciar o servidor
-const porta = 8081; 
+const porta = 8086; 
 http.createServer (app).listen (porta, () => 
         console.log (`Servidor Techshot pronto na porta ${porta}`)); 
